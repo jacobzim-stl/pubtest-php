@@ -175,28 +175,4 @@ final class PetsTest extends TestCase
 
         $this->assertTrue(true); // @phpstan-ignore-line
     }
-
-    #[Test]
-    public function testUploadImage(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('skipped: tests are disabled for the time being');
-        }
-
-        $result = $this->client->pets->uploadImage(0, 'file', 'file');
-
-        $this->assertTrue(true); // @phpstan-ignore-line
-    }
-
-    #[Test]
-    public function testUploadImageWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('skipped: tests are disabled for the time being');
-        }
-
-        $result = $this->client->pets->uploadImage(0, 'file', 'file');
-
-        $this->assertTrue(true); // @phpstan-ignore-line
-    }
 }

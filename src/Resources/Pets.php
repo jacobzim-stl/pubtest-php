@@ -20,9 +20,7 @@ use PhpPublishingTest\Parameters\PetUpdateByIDParam;
 use PhpPublishingTest\Parameters\PetUpdateParam;
 use PhpPublishingTest\Parameters\PetUpdateParam\Status as Status1;
 use PhpPublishingTest\Parameters\PetUpdateParam\Tag as Tag1;
-use PhpPublishingTest\Parameters\PetUploadImageParam;
 use PhpPublishingTest\RequestOptions;
-use PhpPublishingTest\Responses\PetUploadImageResponse;
 
 final class Pets implements PetsContract
 {
@@ -194,33 +192,5 @@ final class Pets implements PetsContract
             query: $parsed,
             options: $options,
         );
-    }
-
-    /**
-     * uploads an image.
-     *
-     * @param array{additionalMetadata: string}|PetUploadImageParam $params
-     */
-    public function uploadImage(
-        int $petID,
-        string $image,
-        array|PetUploadImageParam $params,
-        ?RequestOptions $requestOptions = null,
-    ): PetUploadImageResponse {
-        [$parsed, $options] = PetUploadImageParam::parseRequest(
-            $params,
-            $requestOptions
-        );
-        $resp = $this->client->request(
-            method: 'post',
-            path: ['pet/%1$s/uploadImage', $petID],
-            query: array_diff_key($parsed, ['image']),
-            headers: ['Content-Type' => 'application/octet-stream'],
-            body: $parsed['image'],
-            options: $options,
-        );
-
-        // @phpstan-ignore-next-line;
-        return Conversion::coerce(PetUploadImageResponse::class, value: $resp);
     }
 }
