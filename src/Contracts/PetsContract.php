@@ -16,9 +16,7 @@ use PhpPublishingTest\Parameters\PetUpdateByIDParam;
 use PhpPublishingTest\Parameters\PetUpdateParam;
 use PhpPublishingTest\Parameters\PetUpdateParam\Status as Status1;
 use PhpPublishingTest\Parameters\PetUpdateParam\Tag as Tag1;
-use PhpPublishingTest\Parameters\PetUploadImageParam;
 use PhpPublishingTest\RequestOptions;
-use PhpPublishingTest\Responses\PetUploadImageResponse;
 
 interface PetsContract
 {
@@ -90,14 +88,4 @@ interface PetsContract
         array|PetUpdateByIDParam $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
-
-    /**
-     * @param array{additionalMetadata: string}|PetUploadImageParam $params
-     */
-    public function uploadImage(
-        int $petID,
-        string $image,
-        array|PetUploadImageParam $params,
-        ?RequestOptions $requestOptions = null,
-    ): PetUploadImageResponse;
 }
