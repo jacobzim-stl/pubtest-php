@@ -92,7 +92,7 @@ interface PetsContract
     ): mixed;
 
     /**
-     * @param array{additionalMetadata?: string}|PetUploadImageParam $params
+     * @param array{additionalMetadata: string}|PetUploadImageParam $params
      */
     public function uploadImage(
         int $petID,

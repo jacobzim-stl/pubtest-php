@@ -12,7 +12,7 @@ use PhpPublishingTest\Core\Contracts\BaseModel;
 /**
  * uploads an image.
  *
- * @phpstan-type upload_image_params = array{additionalMetadata?: string}
+ * @phpstan-type upload_image_params = array{additionalMetadata: string}
  */
 final class PetUploadImageParam implements BaseModel
 {
@@ -22,8 +22,8 @@ final class PetUploadImageParam implements BaseModel
     /**
      * Additional Metadata.
      */
-    #[Api(optional: true)]
-    public ?string $additionalMetadata;
+    #[Api]
+    public string $additionalMetadata;
 
     public function __construct()
     {
@@ -36,11 +36,11 @@ final class PetUploadImageParam implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function new(?string $additionalMetadata = null): self
+    public static function new(string $additionalMetadata): self
     {
         $obj = new self;
 
-        null !== $additionalMetadata && $obj->additionalMetadata = $additionalMetadata;
+        $obj->additionalMetadata = $additionalMetadata;
 
         return $obj;
     }

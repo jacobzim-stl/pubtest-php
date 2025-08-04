@@ -199,7 +199,7 @@ final class Pets implements PetsContract
     /**
      * uploads an image.
      *
-     * @param array{additionalMetadata?: string}|PetUploadImageParam $params
+     * @param array{additionalMetadata: string}|PetUploadImageParam $params
      */
     public function uploadImage(
         int $petID,
