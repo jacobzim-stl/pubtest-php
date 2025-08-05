@@ -24,3 +24,5 @@ jobs:
       - name: Update Packagist
         run: |-
           curl -X POST -H 'Content-Type: application/json' 'https://packagist.org/api/update-package?username=${PACKAGIST_USERNAME}&apiToken=${PACKAGIST_SAFE_KEY}' -d '{"repository":"https://www.github.com/jacobzim-stl/pubtest-php"}'
+        env: PACKAGIST_USERNAME: ${{ secrets.PHP_PUBLISHING_TEST_PACKAGIST_USERNAME || secrets.PACKAGIST_USERNAME }}
+      PACKAGIST_SAFE_KEY: ${{ secrets.PHP_PUBLISHING_TEST_PACKAGIST_SAFE_KEY || secrets.PACKAGIST_KEY }}
